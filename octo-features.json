@@ -1,0 +1,37 @@
+{
+  "updatedAt": "2026-06-03",
+  "versions": {
+    "Android": "1.12.0",
+    "iOS": "1.12.0",
+    "React Native": "1.9.3",
+    "Flutter": "1.11.0",
+    "Unity 3D": "1.10.1"
+  },
+  "features": [
+    { "category": "Core Capabilities", "feature": "SSO Authentication", "description": "Login, Signup, User Mgmt", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Core Capabilities", "feature": "Advanced Reactions", "description": "❤️ 😮 😂 👏 😢 😡", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Core Capabilities", "feature": "Push Notifications", "description": "Real-time alerts", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Core Capabilities", "feature": "Octopus notification center", "description": "User profile notification center", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Core Capabilities", "feature": "Frictionless onboarding", "description": "", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Core Capabilities", "feature": "Comments in feed", "description": "", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Core Capabilities", "feature": "Interface translation (7 languages)", "description": "", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Customization", "feature": "Colors Theming", "description": "Brand identity adaptation", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Customization", "feature": "Font size", "description": "Interface and content text size", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Customization", "feature": "Fonts", "description": "Custom typography support", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "no", "Unity 3D": "ok" } },
+    { "category": "Customization", "feature": "Bridge Posts", "description": "Cross-platform linking", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "no", "Unity 3D": "no" } },
+    { "category": "Customization", "feature": "Language Override", "description": "Forced localization", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Media", "feature": "Posts with Image", "description": "Full resolution hosting", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Media", "feature": "Posts with Video", "description": "Playback and streaming", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Data", "feature": "Custom Analytics", "description": "User defined events", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Data", "feature": "Client A/B Testing", "description": "Client provides octopus with A/B testing information", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Data", "feature": "Octopus A/B Testing", "description": "Octopus managed A/B testing", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Data", "feature": "SDK Events", "description": "Lifecycle monitoring", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "no" } },
+    { "category": "Data", "feature": "Posts data API", "description": "Get views, reactions, comments count for a post", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "no", "Unity 3D": "no" } },
+    { "category": "Miscellaneous", "feature": "URL Catch", "description": "Deep link interception", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Miscellaneous", "feature": "Notifications Count", "description": "Notification badge", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Miscellaneous", "feature": "EEA Compliance", "description": "", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Miscellaneous", "feature": "Gamification", "description": "", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Miscellaneous", "feature": "Posts with CTA", "description": "(created with the backoffice)", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "warn" }, "note": "Unity: no API to catch URL" },
+    { "category": "Miscellaneous", "feature": "Follow/Unfollow groups", "description": "Users can follow/unfollow groups", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "ok", "Unity 3D": "ok" } }
+  ]
+}

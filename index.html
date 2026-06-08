@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SDK Feature Matrix</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f6f6fb;
+    --card: #ffffff;
+    --ink: #1c1c28;
+    --muted: #71718a;
+    --line: #ececf3;
+    --th-bg: #fbfbfe;
+    --accent: #6c5ce7;
+    --ok-bg: #e4f7ea;   --ok: #16a34a;
+    --warn-bg: #fff3da; --warn: #d68a00;
+    --soon-bg: #e6f0ff; --soon: #2f7df6;
+    --no-bg: #f1f1f6;   --no: #b3b3c2;
+    --core: #2f7df6; --custom: #8b5cf6; --media: #f59e0b; --data: #10b981; --misc: #6b7280;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px; line-height: 1.45; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 26px 20px 52px; }
+
+  /* header */
+  .head { padding: 6px 2px 20px; }
+  .head h1 { margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -.02em; }
+  .head .sub { margin: 6px 0 0; font-size: 14px; color: var(--muted); }
+  .stats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .stat {
+    font-size: 12.5px; color: var(--muted);
+    background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px;
+  }
+  .stat b { color: var(--ink); font-weight: 800; }
+
+  /* legend */
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 12px; }
+  .legend .lg { display:inline-flex; align-items:center; gap:7px; font-size:12.5px; color:var(--muted);
+    background: var(--card); border:1px solid var(--line); border-radius:999px; padding:5px 12px 5px 6px; }
+  .lgtile { width:20px; height:20px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; }
+
+  /* table */
+  .tablecard { background: var(--card); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+    box-shadow: 0 2px 6px rgba(20,20,40,.05); }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0; min-width: 780px; }
+
+  thead th {
+    position: sticky; top: 0; z-index: 3; background: var(--th-bg);
+    padding: 14px 10px 13px; border-bottom: 1px solid var(--line); text-align: center; vertical-align: bottom;
+  }
+  thead th.feat {
+    text-align: left; padding-left: 22px; left: 0; z-index: 4; width: 248px;
+    font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
+  }
+  .plogo { height: 26px; display:flex; align-items:center; justify-content:center; }
+  .plogo svg { height: 24px; width: 24px; }
+  .pname { display:block; margin-top: 7px; font-size: 12px; font-weight: 750; color: var(--ink); white-space: nowrap; }
+  .pver { display:block; margin-top: 2px; font-size: 11px; font-weight: 800; color: var(--accent); }
+
+  /* category separator row */
+  .cat-row td { padding: 9px 22px; background: #f1f1f7; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .catlabel {
+    display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800;
+    letter-spacing:.07em; text-transform:uppercase; color: var(--muted);
+  }
+  .catlabel .cnt { color: var(--no); font-weight:700; letter-spacing:0; }
+
+  tbody tr.feature td { border-bottom: 1px solid var(--line); }
+  tbody tr.feature:hover td { background: #fafaff; }
+  tbody tr.feature:hover td.feat { background: #fafaff; }
+  td.feat {
+    position: sticky; left: 0; z-index: 1; background: var(--card);
+    padding: 11px 18px 11px 22px; text-align: left;
+    box-shadow: 1px 0 0 var(--line);
+  }
+  td.feat .fname { font-weight: 640; font-size: 14px; }
+  td.feat .fdesc { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  td.cell { padding: 7px; text-align: center; }
+
+  .tile {
+    width: 32px; height: 32px; border-radius: 50%; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center; position: relative;
+  }
+  .tile svg { width: 16px; height: 16px; }
+  .t-ok   { background: var(--ok-bg); }
+  .t-ok   svg { stroke: var(--ok); }
+  .t-warn { background: var(--warn-bg); }
+  .t-warn svg { stroke: var(--warn); }
+  .t-soon { background: var(--soon-bg); }
+  .t-soon svg { stroke: var(--soon); }
+  .t-no   { background: var(--no-bg); }
+  .t-no   svg { stroke: var(--no); }
+  .tile .ntag {
+    position:absolute; top:-4px; right:-4px; width:14px; height:14px; border-radius:50%;
+    background: var(--warn); color:#fff; font-size:9px; font-weight:800; display:flex; align-items:center; justify-content:center;
+    cursor: pointer; border: 1.5px solid #fff; font-style: italic; outline: none;
+  }
+  .ntag .tip {
+    position: absolute; bottom: 145%; right: -5px;
+    background: #1c1c28; color: #fff; font-size: 11.5px; font-weight: 600; font-style: normal;
+    letter-spacing: 0; text-transform: none; line-height: 1.35;
+    padding: 7px 10px; border-radius: 8px; white-space: nowrap;
+    opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity .14s, transform .14s, visibility .14s;
+    z-index: 30; box-shadow: 0 8px 20px rgba(20,20,40,.22); pointer-events: none;
+  }
+  .ntag .tip::after {
+    content: ""; position: absolute; top: 100%; right: 9px;
+    border: 5px solid transparent; border-top-color: #1c1c28;
+  }
+  .ntag:hover .tip, .ntag:focus .tip, .ntag.open .tip {
+    opacity: 1; visibility: visible; transform: translateY(0);
+  }
+
+  footer { margin-top: 16px; color: var(--muted); font-size: 12px; text-align: center; }
+  footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+  @media (max-width: 680px) {
+    td.feat .fdesc { display: none; }
+    .pname { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="head">
+    <h1>Platform Support Matrix</h1>
+  </header>
+
+  <div class="legend" id="legend"></div>
+
+  <div class="tablecard">
+    <div class="scroll">
+      <table>
+        <thead><tr id="head"></tr></thead>
+        <tbody id="body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    Last updated: <span id="updated">2026-06-03</span>
+  </footer>
+</div>
+
+<script>
+const PLATFORMS = ["Android", "iOS", "React Native", "Flutter", "Unity 3D"];
+const VERSIONS = { "Android":"1.12.0", "iOS":"1.12.0", "React Native":"1.9.3", "Flutter":"1.11.0", "Unity 3D":"1.10.1" };
+
+const LOGOS = {
+  "Android": `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3DDC84" d="M7.9 11.1c-.5 0-.9.4-.9.9v4.4c0 .5.4.9.9.9s.9-.4.9-.9v-4.4c0-.5-.4-.9-.9-.9zM16.1 11.1c-.5 0-.9.4-.9.9v4.4c0 .5.4.9.9.9s.9-.4.9-.9v-4.4c0-.5-.4-.9-.9-.9zM9.4 17.6c0 .5.4.9.9.9h.5v1.6c0 .5.4.9.9.9s.9-.4.9-.9v-1.6h.8v1.6c0 .5.4.9.9.9s.9-.4.9-.9v-1.6h.5c.5 0 .9-.4.9-.9v-6.2H9.4z"/><path fill="#3DDC84" d="M14.9 6.2l.8-1.4c.1-.1 0-.3-.1-.3-.1-.1-.3 0-.3.1l-.8 1.4c-.7-.3-1.5-.5-2.5-.5s-1.8.2-2.5.5L8.7 4.6c-.1-.1-.2-.2-.3-.1-.1 0-.2.2-.1.3l.8 1.4C7.4 7 6.5 8.4 6.5 10h11c0-1.6-.9-3-2.6-3.8zM9.7 8.6c-.3 0-.5-.2-.5-.5s.2-.5.5-.5.5.2.5.5-.2.5-.5.5zm4.6 0c-.3 0-.5-.2-.5-.5s.2-.5.5-.5.5.2.5.5-.2.5-.5.5z"/></svg>`,
+  "iOS": `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#111" d="M16.4 12.5c0-2 1.6-2.9 1.7-3-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7c-1.3 0-2.6.8-3.2 2-1.4 2.4-.4 5.9 1 7.9.7 1 1.4 2 2.5 2 1 0 1.3-.6 2.5-.6s1.5.6 2.6.6c1 0 1.7-1 2.4-1.9.7-1.1 1-2.2 1-2.2s-1.9-.7-2-2.6zM14.6 6.4c.5-.6.8-1.5.7-2.4-.7 0-1.6.5-2.1 1.1-.5.5-.9 1.4-.7 2.3.8.1 1.6-.4 2.1-1z"/></svg>`,
+  "React Native": `<svg viewBox="0 0 24 24" fill="none" stroke="#61DAFB" stroke-width="1" aria-hidden="true"><circle cx="12" cy="12" r="1.9" fill="#61DAFB" stroke="none"/><ellipse cx="12" cy="12" rx="10" ry="4.1"/><ellipse cx="12" cy="12" rx="10" ry="4.1" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.1" transform="rotate(120 12 12)"/></svg>`,
+  "Flutter": `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#54C5F8" d="M14.6 2L4 12.6l3.3 3.3L21.1 2z"/><path fill="#54C5F8" d="M14.6 11.3L9.2 16.7l3.3 3.3 5.4-5.4z"/><path fill="#0468D7" d="M12.5 20l-3.3-3.3 5.4-5.4 3.3 3.3z" opacity=".85"/></svg>`,
+  "Unity 3D": `<svg viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><polygon points="12,2.6 20.4,7.3 20.4,16.7 12,21.4 3.6,16.7 3.6,7.3"/><path d="M12 2.6 L12 11.7 M12 11.7 L20.4 16.7 M12 11.7 L3.6 16.7"/></svg>`,
+};
+
+const ICON = {
+  ok:   `<svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,12.5 9.5,18 20,6"/></svg>`,
+  warn: `<svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5 a8.5 8.5 0 0 1 0 17 z" fill="currentColor" stroke="none"/></svg>`,
+  soon: `<svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7 v5 l3.5 2" /></svg>`,
+  no:   `<svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>`,
+};
+const TILECLS = { ok:"t-ok", warn:"t-warn", soon:"t-soon", no:"t-no" };
+const STLABEL = { ok:"Supported", warn:"Partially", soon:"Coming soon", no:"Not supported" };
+
+const CATS = [
+  ["Core Capabilities", "var(--core)"],
+  ["Customization", "var(--custom)"],
+  ["Media", "var(--media)"],
+  ["Data", "var(--data)"],
+  ["Miscellaneous", "var(--misc)"],
+];
+
+const DATA = [
+  {c:"Core Capabilities", f:"SSO Authentication", d:"Login, Signup, User Mgmt", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Core Capabilities", f:"Advanced Reactions", d:"❤️ 😮 😂 👏 😢 😡", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Core Capabilities", f:"Push Notifications", d:"Real-time alerts", Android:"ok", iOS:"ok", "React Native":"no", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Core Capabilities", f:"Octopus notification center", d:"User profile notification center", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Core Capabilities", f:"Frictionless onboarding", d:"", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Core Capabilities", f:"Comments in feed", d:"", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Core Capabilities", f:"Interface translation (7 languages)", d:"", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Customization", f:"Colors Theming", d:"Brand identity adaptation", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Customization", f:"Font size", d:"Interface and content text size", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Customization", f:"Fonts", d:"Custom typography support", Android:"ok", iOS:"ok", "React Native":"no", Flutter:"no", "Unity 3D":"ok"},
+  {c:"Customization", f:"Bridge Posts", d:"Cross-platform linking", Android:"ok", iOS:"ok", "React Native":"no", Flutter:"no", "Unity 3D":"no"},
+  {c:"Customization", f:"Language Override", d:"Forced localization", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Media", f:"Posts with Image", d:"Full resolution hosting", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Media", f:"Posts with Video", d:"Playback and streaming", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Data", f:"Custom Analytics", d:"User defined events", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Data", f:"Client A/B Testing", d:"Client provides octopus with A/B testing information", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Data", f:"Octopus A/B Testing", d:"Octopus managed A/B testing", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Data", f:"SDK Events", d:"Lifecycle monitoring", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"no"},
+  {c:"Data", f:"Posts data API", d:"Get views, reactions, comments count for a post", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"no", "Unity 3D":"no"},
+  {c:"Miscellaneous", f:"URL Catch", d:"Deep link interception", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Miscellaneous", f:"Notifications Count", d:"Notification badge", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Miscellaneous", f:"EEA Compliance", d:"", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Miscellaneous", f:"Gamification", d:"", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
+  {c:"Miscellaneous", f:"Posts with CTA", d:"(created with the backoffice)", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"warn", note:"Unity: no API to catch URL"},
+  {c:"Miscellaneous", f:"Follow/Unfollow groups", d:"Users can follow/unfollow groups", Android:"ok", iOS:"ok", "React Native":"no", Flutter:"ok", "Unity 3D":"ok"},
+];
+
+function tile(s, note){
+  const cls = TILECLS[s] || "t-no";
+  const ic = ICON[s] || ICON.no;
+  const tag = note ? `<span class="ntag" tabindex="0" role="button" aria-label="${note}">i<span class="tip">${note}</span></span>` : "";
+  return `<div class="tile ${cls}" title="${STLABEL[s]||""}">${ic}${tag}</div>`;
+}
+
+function renderLegend(){
+  const items = [["ok","Supported"],["warn","Partially"],["soon","Coming soon"],["no","Not supported"]];
+  document.getElementById("legend").innerHTML = items.map(([s,l])=>
+    `<span class="lg"><span class="lgtile ${TILECLS[s]}">${ICON[s]}</span>${l}</span>`
+  ).join("");
+  // size legend icons
+  document.querySelectorAll(".lgtile svg").forEach(svg=>{ svg.style.width="13px"; svg.style.height="13px"; });
+}
+
+function render(){
+  document.getElementById("head").innerHTML =
+    `<th class="feat">Feature</th>` +
+    PLATFORMS.map(p=>`<th><span class="plogo">${LOGOS[p]||""}</span><span class="pname">${p}</span><span class="pver">${VERSIONS[p]}</span></th>`).join("");
+
+  let html = "";
+  for (const [cat, color] of CATS){
+    const rows = DATA.filter(r => r.c === cat);
+    if (!rows.length) continue;
+    html += `<tr class="cat-row"><td colspan="${PLATFORMS.length+1}"><span class="catlabel">${cat}</span></td></tr>`;
+    for (const r of rows){
+      html += `<tr class="feature"><td class="feat"><div class="fname">${r.f}</div>${r.d?`<div class="fdesc">${r.d}</div>`:""}</td>`;
+      for (const p of PLATFORMS){
+        const note = (p==="Unity 3D" && r.note) ? r.note : "";
+        html += `<td class="cell">${tile(r[p], note)}</td>`;
+      }
+      html += `</tr>`;
+    }
+  }
+  document.getElementById("body").innerHTML = html;
+}
+
+renderLegend();
+render();
+
+// Load live data from the published JSON (refreshed by the GitHub Action).
+// If the file is missing or fetch fails, the embedded data above is used as fallback.
+(async function loadData(){
+  try {
+    const res = await fetch('octo-features.json', { cache: 'no-store' });
+    if (!res.ok) return;
+    const j = await res.json();
+    if (Array.isArray(j.features) && j.features.length){
+      DATA.length = 0;
+      for (const r of j.features){
+        DATA.push({ c:r.category, f:r.feature, d:r.description||"",
+          "Android":r.platforms["Android"], "iOS":r.platforms["iOS"], "React Native":r.platforms["React Native"],
+          "Flutter":r.platforms["Flutter"], "Unity 3D":r.platforms["Unity 3D"], note:r.note||undefined });
+      }
+    }
+    if (j.versions){ for (const p of PLATFORMS){ if (j.versions[p]) VERSIONS[p]=j.versions[p]; } }
+    if (j.updatedAt){ const u=document.getElementById("updated"); if(u) u.textContent=j.updatedAt; }
+    render();
+  } catch(e){ /* keep embedded fallback */ }
+})();
+
+
+// Tooltip: tap to toggle on mobile, tap elsewhere to close
+document.getElementById("body").addEventListener("click", (e) => {
+  const tag = e.target.closest(".ntag");
+  document.querySelectorAll(".ntag.open").forEach(n => { if (n !== tag) n.classList.remove("open"); });
+  if (tag) { e.stopPropagation(); tag.classList.toggle("open"); }
+});
+document.addEventListener("click", () => {
+  document.querySelectorAll(".ntag.open").forEach(n => n.classList.remove("open"));
+});
+</script>
+</body>
+</html>
