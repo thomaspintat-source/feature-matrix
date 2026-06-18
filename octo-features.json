@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-06-03",
+  "updatedAt": "2026-06-18",
   "versions": {
     "Android": "1.12.0",
     "iOS": "1.12.0",
-    "React Native": "1.9.3",
+    "React Native": "1.11.0",
     "Flutter": "1.11.0",
     "Unity 3D": "1.10.1"
   },
   "features": [
     { "category": "Core Capabilities", "feature": "SSO Authentication", "description": "Login, Signup, User Mgmt", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Core Capabilities", "feature": "Advanced Reactions", "description": "❤️ 😮 😂 👏 😢 😡", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
-    { "category": "Core Capabilities", "feature": "Push Notifications", "description": "Real-time alerts", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "ok", "Unity 3D": "ok" } },
+    { "category": "Core Capabilities", "feature": "Push Notifications", "description": "Real-time alerts", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Core Capabilities", "feature": "Octopus notification center", "description": "User profile notification center", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Core Capabilities", "feature": "Frictionless onboarding", "description": "", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Core Capabilities", "feature": "Comments in feed", "description": "", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
@@ -32,6 +32,6 @@
     { "category": "Miscellaneous", "feature": "EEA Compliance", "description": "", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Miscellaneous", "feature": "Gamification", "description": "", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Miscellaneous", "feature": "Posts with CTA", "description": "(created with the backoffice)", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "warn" }, "note": "Unity: no API to catch URL" },
-    { "category": "Miscellaneous", "feature": "Follow/Unfollow groups", "description": "Users can follow/unfollow groups", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "ok", "Unity 3D": "ok" } }
+    { "category": "Miscellaneous", "feature": "Follow/Unfollow groups", "description": "Users can follow/unfollow groups", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } }
   ]
 }
