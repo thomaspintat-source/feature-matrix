@@ -1,8 +1,8 @@
 {
   "updatedAt": "2026-07-27",
   "versions": {
-    "Android": "1.12.1",
-    "iOS": "1.12.6",
+    "Android": "1.13.0",
+    "iOS": "1.13.0",
     "React Native": "1.11.0",
     "Flutter": "1.12.3",
     "Unity 3D": "1.12.6"
@@ -21,7 +21,7 @@
     { "category": "Customization", "feature": "Bridge – Post", "description": "Turn an in-app object into a dedicated community post", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "ok", "Unity 3D": "no" } },
     { "category": "Customization", "feature": "Bridge – Share", "description": "\"Share to community\" button, pre-filled post", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Customization", "feature": "Bridge – Groups", "description": "Deep link straight into a specific community group", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "ok", "Unity 3D": "no" } },
-    { "category": "Customization", "feature": "Unified Profile", "description": "Client's own profile card replaces the native Octopus profile", "platforms": { "Android": "no", "iOS": "no", "React Native": "no", "Flutter": "no", "Unity 3D": "no" }, "note": "SDK 1.13 in progress (Notion status: Ongoing) — not yet published in the tech doc or on GitHub as of 27/07" },
+    { "category": "Customization", "feature": "Unified Profile", "description": "Client's own profile card replaces the native Octopus profile", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "no", "Unity 3D": "no" }, "note": "Live since SDK 1.13 (27/07/2026), native only for now" },
     { "category": "Customization", "feature": "Language Override", "description": "Forced localization", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Media", "feature": "Posts with Image", "description": "Full resolution hosting", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Media", "feature": "Posts with Video", "description": "Playback and streaming", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
