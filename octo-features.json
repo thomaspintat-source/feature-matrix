@@ -26,7 +26,6 @@
     { "category": "Data", "feature": "Client A/B Testing", "description": "Client provides octopus with A/B testing information", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Data", "feature": "Octopus A/B Testing", "description": "Octopus managed A/B testing", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Data", "feature": "SDK Events", "description": "Lifecycle monitoring", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "no" } },
-    { "category": "Data", "feature": "Posts data API", "description": "Get views, reactions, comments count for a post", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "no", "Unity 3D": "no" } },
     { "category": "Miscellaneous", "feature": "URL Catch", "description": "Deep link interception", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Miscellaneous", "feature": "Notifications Count", "description": "Notification badge", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Miscellaneous", "feature": "EEA Compliance", "description": "", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
