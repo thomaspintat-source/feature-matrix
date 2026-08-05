@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-27",
+  "updatedAt": "2026-08-05",
   "versions": {
     "Android": "1.13.0",
-    "iOS": "1.13.0",
+    "iOS": "1.13.2",
     "React Native": "1.11.0",
     "Flutter": "1.12.3",
     "Unity 3D": "1.12.6"
@@ -15,6 +15,8 @@
     { "category": "Customization", "feature": "Colors Theming", "description": "Brand identity adaptation", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Customization", "feature": "Font size", "description": "Interface and content text size", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "ok", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Customization", "feature": "Fonts", "description": "Custom typography support", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "no", "Unity 3D": "ok" } },
+    { "category": "Customization", "feature": "Custom Icons", "description": "Replace the SDK icon set with your own assets", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "no", "Unity 3D": "no" } },
+    { "category": "Customization", "feature": "Custom Emojis", "description": "Replace the reaction images with your own assets", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "no", "Unity 3D": "no" } },
     { "category": "Customization", "feature": "Bridge – Post", "description": "Turn an in-app object into a dedicated community post", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Customization", "feature": "Bridge – Share", "description": "\"Share to community\" button, pre-filled post", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "ok", "Unity 3D": "ok" } },
     { "category": "Customization", "feature": "Bridge – Groups", "description": "Deep link straight into a specific community group", "platforms": { "Android": "ok", "iOS": "ok", "React Native": "no", "Flutter": "ok", "Unity 3D": "ok" } },
