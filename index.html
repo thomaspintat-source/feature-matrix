@@ -118,6 +118,18 @@
     opacity: 1; visibility: visible; transform: translateY(0);
   }
 
+  /* info pastille next to a feature name (long-form tooltip) */
+  td.feat .fname .ntag {
+    position: relative; display: inline-flex; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--muted); color: #fff; font-size: 9px; font-weight: 800; font-style: italic;
+    align-items: center; justify-content: center; margin-left: 6px; vertical-align: middle;
+    cursor: pointer; border: 0; outline: none;
+  }
+  td.feat .fname .ntag .tip {
+    right: auto; left: -6px; white-space: normal; width: 280px; text-align: left; font-weight: 500;
+  }
+  td.feat .fname .ntag .tip::after { right: auto; left: 10px; }
+
   footer { margin-top: 16px; color: var(--muted); font-size: 12px; text-align: center; }
   footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
 
@@ -197,7 +209,7 @@ const DATA = [
   {c:"Data", f:"Custom Analytics", d:"User defined events", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
   {c:"Data", f:"Client A/B Testing", d:"Client provides octopus with A/B testing information", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
   {c:"Data", f:"Octopus A/B Testing", d:"Octopus managed A/B testing", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
-  {c:"Data", f:"SDK Events", d:"Lifecycle monitoring", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"no"},
+  {c:"Data", f:"SDK Events", d:"Lifecycle monitoring", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
   {c:"Data", f:"Posts data API", d:"Get views, reactions, comments count for a post", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"no", "Unity 3D":"no"},
   {c:"Miscellaneous", f:"URL Catch", d:"Deep link interception", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
   {c:"Miscellaneous", f:"Notifications Count", d:"Notification badge", Android:"ok", iOS:"ok", "React Native":"ok", Flutter:"ok", "Unity 3D":"ok"},
@@ -234,9 +246,10 @@ function render(){
     if (!rows.length) continue;
     html += `<tr class="cat-row"><td colspan="${PLATFORMS.length+1}"><span class="catlabel">${cat}</span></td></tr>`;
     for (const r of rows){
-      html += `<tr class="feature"><td class="feat"><div class="fname">${r.f}</div>${r.d?`<div class="fdesc">${r.d}</div>`:""}</td>`;
+      const fnote = r.featureNote ? `<span class="ntag" tabindex="0" role="button" aria-label="${r.featureNote}">i<span class="tip">${r.featureNote}</span></span>` : "";
+      html += `<tr class="feature"><td class="feat"><div class="fname">${r.f}${fnote}</div>${r.d?`<div class="fdesc">${r.d}</div>`:""}</td>`;
       for (const p of PLATFORMS){
-        const note = (p==="Unity 3D" && r.note) ? r.note : "";
+        const note = (r.notes && r.notes[p]) ? r.notes[p] : ((p==="Unity 3D" && r.note) ? r.note : "");
         html += `<td class="cell">${tile(r[p], note)}</td>`;
       }
       html += `</tr>`;
@@ -260,7 +273,8 @@ render();
       for (const r of j.features){
         DATA.push({ c:r.category, f:r.feature, d:r.description||"",
           "Android":r.platforms["Android"], "iOS":r.platforms["iOS"], "React Native":r.platforms["React Native"],
-          "Flutter":r.platforms["Flutter"], "Unity 3D":r.platforms["Unity 3D"], note:r.note||undefined });
+          "Flutter":r.platforms["Flutter"], "Unity 3D":r.platforms["Unity 3D"],
+          note:r.note||undefined, notes:r.notes||undefined, featureNote:r.featureNote||undefined });
       }
     }
     if (j.versions){ for (const p of PLATFORMS){ if (j.versions[p]) VERSIONS[p]=j.versions[p]; } }
